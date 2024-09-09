@@ -1,0 +1,14 @@
+services:
+  proxy:
+    container_name: zing-proxy
+    image: zing-proxy:1.0.0
+    build:
+      dockerfile: Dockerfile
+    command: sh -c 'yarn start:prod'
+    env_file:
+      - ./.env
+    ports:
+      - 3031:3031
+    expose:
+      - 3031
+    restart: unless-stopped
